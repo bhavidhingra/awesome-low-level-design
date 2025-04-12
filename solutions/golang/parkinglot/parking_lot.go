@@ -1,15 +1,24 @@
 package parkinglot
 
+import (
+	"fmt"
+	"sync"
+)
+
 type ParkingLot struct {
 	levels []*Level
 }
 
-var instance *ParkingLot
+var (
+	instance *ParkingLot
+	once     sync.Once
+)
 
 func GetParkingLotInstance() *ParkingLot {
-	if instance == nil {
+	once.Do(func() {
+		fmt.Println("Creating ParkingLot instance")
 		instance = &ParkingLot{levels: []*Level{}}
-	}
+	})
 	return instance
 }
 
