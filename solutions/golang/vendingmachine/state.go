@@ -79,7 +79,9 @@ func (s *DispenseState) InsertCoin(coin Coin)           { fmt.Println("Please co
 func (s *DispenseState) InsertNote(note Note)           { fmt.Println("Please collect the product.") }
 func (s *DispenseState) DispenseProduct() {
 	fmt.Println("Product dispensed:", s.vendingMachine.selectedProduct.name)
-	s.vendingMachine.SetState(s.vendingMachine.returnChangeState)
+	vm := s.vendingMachine
+	vm.inventory.RemoveProduct(vm.selectedProduct)
+	vm.SetState(vm.returnChangeState)
 }
 
 func (s *DispenseState) ReturnChange() { fmt.Println("Please collect the product first.") }

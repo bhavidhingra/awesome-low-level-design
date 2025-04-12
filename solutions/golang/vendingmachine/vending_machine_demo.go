@@ -14,7 +14,7 @@ func Run() {
 
 	// Add products to the inventory
 	vm.inventory.AddProduct(coke, 5)
-	vm.inventory.AddProduct(pepsi, 3)
+	vm.inventory.AddProduct(pepsi, 1)
 	vm.inventory.AddProduct(water, 2)
 
 	// Demonstrate a transaction
@@ -54,4 +54,7 @@ func Run() {
 
 	fmt.Println("Returning change")
 	vm.ReturnChange()
+
+	fmt.Println()
+	vm.SelectProduct(pepsi)
 }
